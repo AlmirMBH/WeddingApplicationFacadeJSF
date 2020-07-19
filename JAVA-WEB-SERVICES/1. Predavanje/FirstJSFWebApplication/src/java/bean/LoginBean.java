@@ -10,7 +10,7 @@ public class LoginBean implements Serializable{
     }
     
     public String login(){
-        // U ovu metodu ide logika logina: validacija username i passwordx
+        // U ovu metodu ide logika logina: validacija username i passwordx        
         return "index";
     }
 }
