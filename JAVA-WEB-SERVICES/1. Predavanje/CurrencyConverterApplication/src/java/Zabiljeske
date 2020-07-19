@@ -1,0 +1,36 @@
+
+Web Shop
+1. JSF (kao GUI na web-u -> zamjena za html, css i javascript) + 
+2. xHTML (tzv. JSF pages) +
+3. EJB (SessionBean (local, remote), MessageDrivenBean) + 
+4. JPA + 
+5. ORM tool (Hibernate i imenovani upiti) +
+6. MySQL
+
+- EJB kontejner
+1) SessionBean (imat ćemo registerBean, loginBean itd.)
+1.1.) LocalSessionBean
+2) RemoteSessionBean
+2.1.) MessageDrivenBean
+
+- Tipovi SessionBean-ova
+1. Stateful - utiče na memoriju, ne uništava se i ne čisti, pamti stanja sve dok radi i aplikacija
+2. Stateless - (bolja opcija) ne pamte stanja i čiste se (garbage collector) nakon svakog izvršavanja zahtjeva
+3. Singleton
+
+- Dependency injection
+@EJB
+private final LoginSessionBeanInterface loginSessionBean; - mi ne kreiramo objekat, kreira ga EJB kontejner i injektuje
+
+- EJB remote session bean preko kojih komuniciraju javine udaljene aplikacije i tada nam ne treba web servis
+- EJB local session bean omogućava komunikaciju JSF i JPA/ORM
+- xml i jSON najvažniji formati za web servise
+- Servlet u pozadini radi kao kontroler i preusmjerava zahtjeve korisnika i određuje koji view će se prikazati
+- EJB, JPA + ORM
+- JSP - stara tehnologija
+- Servlet kontejner (JAVA SE) vs EJB kontejner (JAVA EE)
+- JAVA EE ima Java Transaction API (distribuirane i nedistribuirane), JPA, kao i EntityManager su takođe u sklopu Java EE
+- Java Messaging System
+- Upravljanje WEB servisima JAX-WS
+- Ukoliko u aplikaciji zaobiđemo servlete, ne mora se koristiti HTTP, već može RMI (remote method invocation)
+- Web servisi su još veći standard od JavaBean i omogućavaju pristup podacima iz aplikacija napisanih u drugim programskim jezicima

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <h:head>      
+        <title>Wedding Shop</title>        
+    </h:head>
+    
+    <h:body>        
+        
+        <h1>Pozdrav iz INDEX JSF</h1>
+        <!-- Ukoliko želimo učitati sadržaj ManagedBean-ova, dodajemo donje linije koda -->
+        <!-- NoneScoped dozovljava kreiranje onoliko različitih objekata koliko imamo poziva -->
+        <!-- RequestScoped dozovljava kreiranje jednog objekta na nivou zahtjeva bez obzira na
+        broj poziva -->
+        <h2>Ovaj sadržaj učitavam iz #{pozdravniBean.message}</h2>
+        <h2>Scope Test 1 iz HelloWorld Bean:  #{pozdravniBean.hashCode}</h2>
+        <h2>Scope Test 2 iz HelloWorld Bean:  #{pozdravniBean.hashCode}</h2>
+        <h2>Scope Test 3 iz HelloWorld Bean:  #{pozdravniBean.hashCode}</h2>
+        <hr/>            
+        <h2>Ovaj sadržaj učitavam iz #{pozdravniBean1.message}</h2>
+        <hr/>
+        <h2>Ovaj sadržaj učitavam iz firstBean-a, a poruka je iz #{firstBean.messageFromSecondBean}</h2>
+        <hr/>
+        <h2>Ukoliko su podaci validni, forma će preusmjeriti korisnika na sljedeću stranicu</h2>
+        <h:form>
+            <h:commandButton value="Continue" action="secondJSFPage" />
+            
+            
+        </h:form>
+        
+    </h:body>
+</html>
+

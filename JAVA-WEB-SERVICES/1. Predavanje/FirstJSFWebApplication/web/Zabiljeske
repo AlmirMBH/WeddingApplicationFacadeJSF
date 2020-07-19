@@ -1,0 +1,59 @@
+
+1. Da bi .jsf stranica prikazala podatke na zahtjev korisnika, zahtjev iz npr. browser-a se 
+   prvo usmjerava na Faces servlet (u pozadini), a on kontaktira .jsf stranicu, koja 
+   kontaktira model koji čuva podatke tj. njen ManagedBean, koji može imati formu npr. POJO,
+   a može određivati i na koju stranicu vodi korisnika nakon upisa npr. imena korisnika i
+   šifre (kao navigacijski kontroler).
+   Faces servlet se kreira automatski u Configuration Files, a u njemu se nalaze svi podaci
+   koji se na njega odnose (ime, redoslijed load-a i sl.), kao i redirekcija na home page,
+   koji se može postavljati po želji korisnika: 
+
+   <welcome-file-list>
+        <welcome-file>faces/index.xhtml</welcome-file>
+    </welcome-file-list>
+
+   Ukratko, u njemu su instrukcije za instalaciju aplikacije na server.
+   U ovako postavljenom projektu, 
+   - FacesServlet ima ulogu kontrolera,
+   - .jsf stranica je view
+   - ManagedBean je model 
+
+2. Name spaces <h:head> su importi u javi. U hmtl možemo importovati svoj prostor imena,
+   odnosno tagova. Kako HMTL ima svoje tagove, tako i JSF ima svoje. 
+
+3. Bean vs ManagedBeans
+   Bean: implementacija serializable, prazan konstruktor, setters & getters
+
+   ManagedBean: implementacija serializable, (konzistentna) anotacija ManagedBean
+  (javax.annotation (nova verzija; CDI context dependency injection) ili javax.faces.bean (stara)), 
+   prazan konstruktor, getter.
+
+   Generisani ManagedBean: anotacija @Named i @Dependent, prazan konstruktor i getter
+
+4. SCOPE
+   ManagedBean-ovi mogu imati anotacije
+
+   - @NoneScoped: jedino ovaj scope dozvoljava kreiranje onoliko objekata koliko imamo poziva
+   konstruktora
+   - RequestScoped: Ovaj scope dozvoljava kreiranje samo jednog objekta na nivou jednog zahtjeva, 
+   bez obzira na broj poziva. Ovaj objekat uništava se nakon slanja response
+   (u npr. Google browser). U dva različita browsera, kreirat će se dva ovakva objekta.
+   - ViewScoped: Objekat kreiran u ovom opsegu živi sve dok se korisnik nalazi na istom tabu/prozoru.
+   Teško je napraviti razliku između ovog i RequestScoped jer se ona adekvatno vidi tek u
+   kombinaciji sa AJAX-om. 
+   - SessionScoped: Obično se postavlja na korisnika kako bi postojao sve dok je u sesiji.
+   - ApplicationScoped: Kreira se jedan objekat na nivou aplikacije
+
+   - ManagedProperty: omogućava dependency injection tj. injektovanje jednog bean-a u drugi, u
+     našem slučaju SecondBean u FirstBean, a onda ičšitavanje u index.xhtml
+
+5. ManagedBean može biti i navigator (implicitna navigacija) korištenjem metode, vidi login.xhtml
+   i LoginBean.
+   Uslovna implicitna navigacija (vidi NavigationBean) kroz ManagedBean
+
+6. Implicitna navigacija bez ManagedBean-a može biti pomoću npr. forme (vidi index.xhtml)
+
+7. Ukoliko u JSF stranicu želimo učitati sadržaj iz njenog ManagedBean-a, moramo ukucati:
+
+   npr <h1>#{imeBeana.message}</h1> - dio imena getter-a 'get' (od getMessage) ne mora se pisati
+   umjesto # može se koristiti i $
