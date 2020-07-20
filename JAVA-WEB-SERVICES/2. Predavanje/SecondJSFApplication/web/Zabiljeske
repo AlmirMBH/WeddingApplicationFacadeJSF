@@ -1,0 +1,37 @@
+
+GIT: User form <h:form>, username, password, login time, user session, hard-coded list of
+     products, redirections, userBean, productBean, MVC-like app model, REGEX, validator message
+     and condition, Validator klasa (djeljivo sa 3), 
+
+1. browser kontaktira -> FacesServlet, koji preusmjerava na željeni view ->
+   JSF page (xhtml), koji kontaktira -> ManageBean.java u kojem su podaci -> JSF -> browser
+
+
+2. SCOPE
+   ManagedBean-ovi mogu imati anotacije
+
+   - @NoneScoped: jedino ovaj scope dozvoljava kreiranje onoliko objekata koliko imamo poziva
+   konstruktora
+   - RequestScoped: Ovaj scope dozvoljava kreiranje samo jednog objekta na nivou jednog zahtjeva, 
+   bez obzira na broj poziva. Ovaj objekat uništava se nakon slanja response
+   (u npr. Google browser). U dva različita browsera, kreirat će se dva ovakva objekta.
+   - ViewScoped: Objekat kreiran u ovom opsegu živi sve dok se korisnik nalazi na istom tabu/prozoru.
+   Teško je napraviti razliku između ovog i RequestScoped jer se ona adekvatno vidi tek u
+   kombinaciji sa AJAX-om. 
+   - SessionScoped: Obično se postavlja na korisnika kako bi postojao sve dok je u sesiji.
+   - ApplicationScoped: Kreira se jedan objekat na nivou aplikacije
+
+   - ManagedProperty: omogućava dependency injection tj. injektovanje jednog bean-a u drugi, u
+     našem slučaju SecondBean u FirstBean, a onda ičšitavanje u index.xhtml
+
+3. Dodavanjem sljedeće linije koda:        
+   rendered="#{userManagedBean.loggedIn}
+   sesija se postavlja na korisnika, dok scope na UserManagedBean mora biti @SessionScoped        
+
+4. Biblioteke tagova -> <h: <f:  Konvertori i validatori počinju sa tagovima <f:
+   <f:validateLength, <f:validateLongRange (tip long), <f:validateDoubleRange, <f:validateRegex
+
+5. Da bi klasa bila VALIDATOR u JSF, mora implementirati validator (vidi DivisibleByThreeValidator)
+   i imati anotaciju @FacesValidator("divisibleByThreeValidator")
+
+6.  

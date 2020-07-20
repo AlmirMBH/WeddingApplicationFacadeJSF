@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login Form</title>
+    </h:head>
+    <h:body>
+        <!-- Svi tagovi koji počinju sa h imaju svoj ekvivalent u html-u
+        NEOPHODNO REFAKTORISATI LINIJE KODA 35-39-->
+        
+    <h:form>
+        <h:panelGrid columns="3" border="3" style="border-collapse: collapse my-1">
+            
+            <h:outputLabel>Korisničko ime </h:outputLabel>
+            <h:inputText id="usernameInput" value="#{userManagedBean.username}" validatorMessage="At least 5 characters">            
+            <f:validateLength minimum="5" maximum="12"/>            
+            </h:inputText>
+            <h:message for="usernameInput" style="color: red" />
+            
+            
+            <h:outputLabel>Lozinka </h:outputLabel>
+            <h:inputSecret id="passwordInput" value="#{userManagedBean.password}" validatorMessage="At least 5 characters, one upper case letter, one lower case letter and one special
+                symbol (“@#$%!”)">
+                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!]).{5,20})" />
+                <!-- The above regex pattern is required 5 to 20 characters string with at
+                least one digit, one upper case letter, one lower case letter and one special
+                symbol (“@#$%!”). This is strong and complex enough for a password validation
+                -->
+            </h:inputSecret>
+            <h:message for="passwordInput" style="color: red" />            
+                     
+            <h:outputLabel>Login date: </h:outputLabel>
+            <h:inputText id="loginDate" value="#{userManagedBean.date}">
+                <f:convertDateTime pattern="dd-mm-yyyy" />
+            </h:inputText>
+            <h:commandButton action="#{userManagedBean.login()}" value="Login" />            
+        </h:panelGrid>
+    </h:form>
+        
+        <!--
+            <h:outputLabel value="Number divisible by three" />            
+            <h:inputText id="numberInput" value="#{userManagedBean.number}" >
+                <f:validator validatorId="divisibleByThreeValidator" />                
+            </h:inputText>
+            <h:message for="numberInput" style="color: red" />
+            -->   
+
+    </h:body>
+</html>
+
