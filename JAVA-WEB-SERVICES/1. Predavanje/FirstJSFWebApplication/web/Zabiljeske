@@ -14,9 +14,10 @@
 
    Ukratko, u njemu su instrukcije za instalaciju aplikacije na server.
    U ovako postavljenom projektu, 
-   - FacesServlet ima ulogu kontrolera,
-   - .jsf stranica je view
-   - ManagedBean je model 
+   - FacesServlet ima ulogu kontrolera (MVC), komunicira sa .jsf, ali i sa ManagedBean
+   - .jsf stranica je view  -> <h:   <f:   <p: (prime faces tj. gotove komponente)
+   - ManagedBean je model, ali može biti i kontroler. Može komunicirati direktno sa bazom, ali
+     to nije dobra praksa/arhitektura. Puno je bolje da to radi preko session beanova.     
 
 2. Name spaces <h:head> su importi u javi. U hmtl možemo importovati svoj prostor imena,
    odnosno tagova. Kako HMTL ima svoje tagove, tako i JSF ima svoje. 
@@ -29,6 +30,9 @@
    prazan konstruktor, getter.
 
    Generisani ManagedBean: anotacija @Named i @Dependent, prazan konstruktor i getter
+
+   Eager u ManagedBean može biti true ili lazy, a određuje momenat kreiranja objekta.
+   True -> prilikom startanja aplikacije; Lazy -> tek kada dođe zahtjev iz npr. .jsf
 
 4. SCOPE
    ManagedBean-ovi mogu imati anotacije
@@ -48,8 +52,8 @@
      našem slučaju SecondBean u FirstBean, a onda ičšitavanje u index.xhtml
 
 5. ManagedBean može biti i navigator (implicitna navigacija) korištenjem metode, vidi login.xhtml
-   i LoginBean.
-   Uslovna implicitna navigacija (vidi NavigationBean) kroz ManagedBean
+   i LoginBean, npr. kada kažem u login formi (action) na koju stranicu da se preusmjeri korisnik
+   USLOVNA implicitna navigacija (vidi NavigationBean) kroz ManagedBean
 
 6. Implicitna navigacija bez ManagedBean-a može biti pomoću npr. forme (vidi index.xhtml)
 
@@ -57,3 +61,5 @@
 
    npr <h1>#{imeBeana.message}</h1> - dio imena getter-a 'get' (od getMessage) ne mora se pisati
    umjesto # može se koristiti i $
+
+   JSF zasnovan je na servletima.
