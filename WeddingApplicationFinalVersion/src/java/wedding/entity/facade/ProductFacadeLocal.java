@@ -9,7 +9,7 @@ import wedding.entity.Product;
 public interface ProductFacadeLocal {
 
     public List<Product> getAllProducts();
-     
+
     void create(Product product);
 
     void edit(Product product);
@@ -23,5 +23,5 @@ public interface ProductFacadeLocal {
     List<Product> findRange(int[] range);
 
     int count();
-    
+
 }

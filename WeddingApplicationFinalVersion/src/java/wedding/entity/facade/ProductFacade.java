@@ -12,7 +12,7 @@ import wedding.entity.Product;
 @Stateless
 public class ProductFacade extends AbstractFacade<Product> implements ProductFacadeLocal {
 
-    @PersistenceContext(unitName = "TestWebPU")
+    @PersistenceContext(unitName = "WeddingApplicationFinalVersionPU")
     private EntityManager entityManager;
 
     @Override

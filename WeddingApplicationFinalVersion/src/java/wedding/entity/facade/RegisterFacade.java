@@ -21,7 +21,7 @@ public class RegisterFacade extends AbstractFacade<User> implements RegisterFaca
         super(User.class);
     }
 
-    @PersistenceContext(unitName = "TestWebPU")
+    @PersistenceContext(unitName = "WeddingApplicationFinalVersionPU")
     private EntityManager entityManager;
 
     @Override

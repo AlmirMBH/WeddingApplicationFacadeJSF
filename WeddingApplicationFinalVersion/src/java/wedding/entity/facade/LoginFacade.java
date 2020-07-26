@@ -8,7 +8,7 @@ import wedding.entity.User;
 @Stateless
 public class LoginFacade implements LoginFacadeLocal {
 
-    @PersistenceContext(unitName = "TestWebPU")
+    @PersistenceContext(unitName = "WeddingApplicationFinalVersionPU")
     private EntityManager entitiyManager;
 
 

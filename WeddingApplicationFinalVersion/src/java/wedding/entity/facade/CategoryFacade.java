@@ -10,11 +10,11 @@ import wedding.entity.Category;
 public class CategoryFacade extends AbstractFacade<Category> implements CategoryFacadeLocal {
 
     @PersistenceContext(unitName = "WeddingApplicationFinalVersionPU")
-    private EntityManager em;
+    private EntityManager entityManager;
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+        return entityManager;
     }
 
     public CategoryFacade() {

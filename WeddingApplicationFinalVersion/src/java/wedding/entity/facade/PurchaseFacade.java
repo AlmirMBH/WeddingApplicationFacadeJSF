@@ -6,15 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import wedding.entity.Purchase;
 
+
 @Stateless
 public class PurchaseFacade extends AbstractFacade<Purchase> implements PurchaseFacadeLocal {
 
     @PersistenceContext(unitName = "WeddingApplicationFinalVersionPU")
-    private EntityManager em;
+    private EntityManager entityManager;
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+        return entityManager;
     }
 
     public PurchaseFacade() {

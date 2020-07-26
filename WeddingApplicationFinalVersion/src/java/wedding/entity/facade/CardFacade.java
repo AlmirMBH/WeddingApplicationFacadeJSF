@@ -7,15 +7,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import wedding.entity.Card;
 
+
 @Stateless
 public class CardFacade extends AbstractFacade<Card> implements CardFacadeLocal {
 
-    @PersistenceContext(unitName = "TestWebPU")
-    private EntityManager entitiyManager;
+    @PersistenceContext(unitName = "WeddingApplicationFinalVersionPU")
+    private EntityManager entityManager;
 
     @Override
     protected EntityManager getEntityManager() {
-        return entitiyManager;
+        return entityManager;
     }
 
     public CardFacade() {
@@ -27,7 +28,7 @@ public class CardFacade extends AbstractFacade<Card> implements CardFacadeLocal 
     @Override
     public boolean validate(Card card) {
         
-        Query query = entitiyManager.createNamedQuery("Card.findByCvv");
+        Query query = entityManager.createNamedQuery("Card.findByCvv");
         List<Card> cards = query.getResultList();
         for(Card validatedCard : cards ){
             if(validatedCard.equals(card)){

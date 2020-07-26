@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 import wedding.entity.User;
 
+
 @Local
 public interface UserFacadeLocal {
 
@@ -21,5 +22,8 @@ public interface UserFacadeLocal {
     List<User> findRange(int[] range);
 
     int count();
+    
+    
+    public User findUserByUsername(String username);
     
 }

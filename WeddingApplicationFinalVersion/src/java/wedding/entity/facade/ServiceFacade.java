@@ -6,15 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import wedding.entity.Service;
 
+
 @Stateless
 public class ServiceFacade extends AbstractFacade<Service> implements ServiceFacadeLocal {
 
     @PersistenceContext(unitName = "WeddingApplicationFinalVersionPU")
-    private EntityManager em;
+    private EntityManager entityManager;
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+        return entityManager;
     }
 
     public ServiceFacade() {

@@ -7,7 +7,8 @@ import wedding.entity.Card;
 
 @Local
 public interface CardFacadeLocal {
-
+    
+    
     public boolean validate(Card card);
     
     void create(Card card);

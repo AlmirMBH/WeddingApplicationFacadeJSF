@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 import wedding.entity.Shops;
 
+
 @Local
 public interface ShopsFacadeLocal {
 
@@ -16,7 +17,7 @@ public interface ShopsFacadeLocal {
 
     Shops find(Object id);
 
-    List<Shops> findAll();
+    public List<Shops> findAll();
 
     List<Shops> findRange(int[] range);
 

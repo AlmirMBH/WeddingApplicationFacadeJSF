@@ -10,7 +10,7 @@ import wedding.entity.Privilege;
 @Stateless
 public class PrivilegeFacade extends AbstractFacade<Privilege> implements PrivilegeFacadeLocal {
 
-    @PersistenceContext(unitName = "TestWebPU")
+    @PersistenceContext(unitName = "WeddingApplicationFinalVersionPU")
     private EntityManager entityManager;
 
     @Override

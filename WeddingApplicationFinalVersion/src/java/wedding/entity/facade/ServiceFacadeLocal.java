@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 import wedding.entity.Service;
 
+
 @Local
 public interface ServiceFacadeLocal {
 
