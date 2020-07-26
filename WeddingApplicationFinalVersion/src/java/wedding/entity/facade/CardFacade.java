@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import wedding.entity.Card;
 
-
 @Stateless
 public class CardFacade extends AbstractFacade<Card> implements CardFacadeLocal {
 
