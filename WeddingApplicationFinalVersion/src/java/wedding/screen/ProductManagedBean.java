@@ -6,7 +6,10 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import wedding.entity.Category;
 import wedding.entity.Product;
+import static wedding.entity.Product_.idCategory;
+import wedding.entity.facade.CategoryFacadeLocal;
 import wedding.entity.facade.ProductFacadeLocal;
 import wedding.shoppingCart.ShoppingCartItem;
 
@@ -16,12 +19,12 @@ public class ProductManagedBean implements Serializable {
 
     @Inject
     private ProductFacadeLocal productFacadeLocal;
+    private CategoryFacadeLocal categoryFacadeLocal;
     
-
     private Integer quantity;
     private List<ShoppingCartItem> shoppingCartItems = new ArrayList<>();
+    private Category category;
     
-
     public ProductManagedBean() {
     }
 
@@ -53,9 +56,25 @@ public class ProductManagedBean implements Serializable {
         this.quantity = quantity;
     }
 
-    public List<Product> getAllProducts() {
-        return productFacadeLocal.getAllProducts();
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
+    public Category getCategory() {
+        return category;
+    }   
+
+    public List<Product> getAllDresses() {
+        return productFacadeLocal.getAllDresses();        
+    }
+    
+    public List<Product> getAllSuits() {
+        return productFacadeLocal.getAllSuits();        
+    }
+    
+    
+    
+    
+    
     
 }

@@ -35,5 +35,38 @@ public class ShopsFacade extends AbstractFacade<Shops> implements ShopsFacadeLoc
             return Collections.emptyList();
         }        
     }
+
+    @Override
+    public List<Shops> findCatering() {
+        try {
+            Query query = entityManager.createNamedQuery("Shops.findCatering");
+            return query.getResultList();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public List<Shops> findPhotoVideo() {
+        try {
+            Query query = entityManager.createNamedQuery("Shops.findPhotoVideo");
+            return query.getResultList();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public List<Shops> findDecorations() {
+        try {
+            Query query = entityManager.createNamedQuery("Shops.findDecorations");
+            return query.getResultList();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
     
 }

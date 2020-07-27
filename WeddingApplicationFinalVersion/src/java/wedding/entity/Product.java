@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package wedding.entity;
 
 import java.io.Serializable;
@@ -25,21 +21,21 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author Almir
- */
+
 @Entity
 @Table(name = "product")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")
     , @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.id = :id")
+    , @NamedQuery(name = "Product.findDress", query = "SELECT p FROM Product p WHERE p.idCategory.id = 1")
+    , @NamedQuery(name = "Product.findSuit", query = "SELECT p FROM Product p WHERE p.idCategory.id = 2")
     , @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name")
     , @NamedQuery(name = "Product.findByCode", query = "SELECT p FROM Product p WHERE p.code = :code")
     , @NamedQuery(name = "Product.findByColor", query = "SELECT p FROM Product p WHERE p.color = :color")
     , @NamedQuery(name = "Product.findBySize", query = "SELECT p FROM Product p WHERE p.size = :size")
-    , @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price")})
+    , @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price")
+    , @NamedQuery(name = "Product.findByPhoto", query = "SELECT p FROM Product p WHERE p.photo = :photo")})
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -72,6 +68,11 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "price")
     private long price;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "photo")
+    private String photo;
     @JoinColumn(name = "id_category", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Category idCategory;
@@ -85,13 +86,14 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(Integer id, String name, String code, String color, String size, long price) {
+    public Product(Integer id, String name, String code, String color, String size, long price, String photo) {
         this.id = id;
         this.name = name;
         this.code = code;
         this.color = color;
         this.size = size;
         this.price = price;
+        this.photo = photo;
     }
 
     public Integer getId() {
@@ -140,6 +142,14 @@ public class Product implements Serializable {
 
     public void setPrice(long price) {
         this.price = price;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Category getIdCategory() {

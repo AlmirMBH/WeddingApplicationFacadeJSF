@@ -12,6 +12,8 @@
         }
         .dresses-title{color: pink; text-align: center}
         
+        .suit-title{color: black; text-align: center}
+        
         card-img-wrapper{overflow: hidden; }
         </style>
     </h:head>
@@ -23,110 +25,45 @@
         <h4 class="dresses-title">Dresses</h4>
         </div>        
             
-            <div class="container pt-3" style="pt-5">
-                <div class="row">
-                            <div class="col-sm-3">
-                                <div class="card" style="width: 16rem;"> 
-                                    <div class="card-img-wrapper">
-                                        <img class="card-img-top" src="../img/dress1.jpg"></img>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">2020 Beach Lace </h5>
-                                        <p class="card-text">This dress is Made-To-Order. Whether you choose a standard size or custom measurements, our tailors craft each dress to order.</p>
-                                        <a href="#" class="btn btn-primary">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                                <div class="col-sm-3">
-                                    <div class="card" style="width: 16rem;">
-                                        <img class="card-img-top" src="../img/dress2.jpg"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Princess V-neck</h5>
-                                            <p class="card-text">A definition of traditional and modern style of wedding dress. Made from tulle and lace, this stunning dress has a fit bodice and neckline.</p>                                            
-                                            <a href="#" class="btn btn-primary">Read more</a>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <div class="col-sm-3">
-                                    <div class="card" style="width: 16rem;">
-                                        <img class="card-img-top" src="../img/dress3.jpg"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Neck Floor-Length</h5>
-                                            <p class="card-text">The chiffon skirt, in a relaxed A-line, gracefully flows to the floor. The elegant sleeveless lace bodice boasts a beautiful high neckline.</p>
-                                            <a href="#" class="btn btn-primary">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                    
+        
+        <div class="container">
+            <div class="row">
+                <ui:repeat value="#{productManagedBean.allDresses}" var="dress">
                     <div class="col-sm-3">
-                                    <div class="card" style="width: 16rem;">
-                                        <img class="card-img-top" src="../img/dress4.jpg"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Chiffon Wedding Dress</h5>
-                                            <p class="card-text">Striking and luxurious, this A-line asymmetrical wedding dress will help you make the wedding a success! It has a silk-like satin lining.</p>
-                                            <a href="#" class="btn btn-primary">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>                                
-                </div>
-                
-                
-                
-                
-            <div class="container pt-3" style="pt-5">
-                <h4 style="text-align: center;" >Suits</h4>
-                <div class="row">
-                            <div class="col-sm-3">
-                                <div class="card" style="width: 16rem;"> 
-                                    <div class="card-img-wrapper">
-                                        <img class="card-img-top" src="../img/weddingsuit1.jpg"></img>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">2020 Dark Horse </h5>
-                                        <p class="card-text">This dress is Made-To-Order. Whether you choose a standard size or custom measurements, our tailors craft each dress to order.</p>
-                                        <a href="#" class="btn btn-primary">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                                <div class="col-sm-3">
-                                    <div class="card" style="width: 16rem;">
-                                        <img class="card-img-top" src="../img/weddingsuit2.jpg"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Prince V-neck</h5>
-                                            <p class="card-text">A definition of traditional and modern style of wedding dress. Made from tulle and lace, this stunning dress has a fit bodice and neckline.</p>                                            
-                                            <a href="#" class="btn btn-primary">Read more</a>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <div class="col-sm-3">
-                                    <div class="card" style="width: 16rem;">
-                                        <img class="card-img-top" src="../img/weddingsuit3.jpg"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Red Nerd</h5>
-                                            <p class="card-text">The chiffon skirt, in a relaxed A-line, gracefully flows to the floor. The elegant sleeveless lace bodice boasts a beautiful high neckline.</p>
-                                            <a href="#" class="btn btn-primary">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                    
+                        <div class="card mb-4" style="border: activeborder">
+                            <h:graphicImage value="#{dress.photo}"></h:graphicImage><br/>                                                    
+                            
+                            <h2 style="text-align: center"><h:outputText value="#{product.name}" /></h2>
+                            Color: <h:outputText value="#{dress.color}" /><br/>
+                            Size: <h:outputText value="#{dress.size} " /><br/>
+                            Price: <h:outputText value="#{dress.price} " /> <br/>
+                        </div>
+                    </div>    
+                </ui:repeat>  
+            </div>
+        </div>
+        
+        
+        <h4 class="suit-title">Suits</h4>
+        
+        <div class="container">
+            <div class="row">
+                <ui:repeat value="#{productManagedBean.allSuits}" var="suit">
                     <div class="col-sm-3">
-                                    <div class="card" style="width: 16rem;">
-                                        <img class="card-img-top" src="../img/weddingsuit4.jpg"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gray Business Failure</h5>
-                                            <p class="card-text">Striking and luxurious, this A-line asymmetrical wedding dress will help you make the wedding a success! It has a silk-like satin lining.</p>
-                                            <a href="#" class="btn btn-primary">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>                                
-                </div>
-                
+                        <div class="card mb-4" style="border: activeborder">
+                            <h:graphicImage value="#{suit.photo}"></h:graphicImage><br/>                                                    
+                            
+                            <h2 style="text-align: center"><h:outputText value="#{product.name}" /></h2>
+                            Color: <h:outputText value="#{suit.color}" /><br/>
+                            Size: <h:outputText value="#{suit.size} " /><br/>
+                            Price: <h:outputText value="#{suit.price} " /> <br/>
+                        </div>
+                    </div>    
+                </ui:repeat>  
+            </div>
+        </div>
+        
+        
                 
                 <div class="card text-center mt-5 mb-5" >
                     <div class="card-header">
@@ -140,9 +77,7 @@
                     <div class="card-footer text-muted">
                         Now or never
                     </div>
-                </div>          
-            </div>
-            </div>
+                </div>  
         <ui:include src="../include/footer.xhtml" />
     </h:body>
 </html>

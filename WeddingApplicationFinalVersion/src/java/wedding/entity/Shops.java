@@ -25,6 +25,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Shops.findAll", query = "SELECT s FROM Shops s")
     , @NamedQuery(name = "Shops.findById", query = "SELECT s FROM Shops s WHERE s.id = :id")
+    , @NamedQuery(name = "Shops.findCatering", query = "SELECT s FROM Shops s WHERE s.idService.id = 1")
+    , @NamedQuery(name = "Shops.findPhotoVideo", query = "SELECT s FROM Shops s WHERE s.idService.id = 2")    
+    , @NamedQuery(name = "Shops.findDecorations", query = "SELECT s FROM Shops s WHERE s.idService.id = 3")    
     , @NamedQuery(name = "Shops.findByName", query = "SELECT s FROM Shops s WHERE s.name = :name")
     , @NamedQuery(name = "Shops.findByAddress", query = "SELECT s FROM Shops s WHERE s.address = :address")
     , @NamedQuery(name = "Shops.findByContact", query = "SELECT s FROM Shops s WHERE s.contact = :contact")

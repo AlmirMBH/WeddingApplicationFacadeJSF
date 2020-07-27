@@ -9,6 +9,12 @@ import wedding.entity.Shops;
 @Local
 public interface ShopsFacadeLocal {
 
+    public List<Shops> findCatering();
+    
+    public List<Shops> findPhotoVideo();
+    
+    public List<Shops> findDecorations();
+    
     void create(Shops shops);
 
     void edit(Shops shops);

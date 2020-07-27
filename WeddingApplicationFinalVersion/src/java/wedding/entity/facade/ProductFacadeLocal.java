@@ -9,6 +9,10 @@ import wedding.entity.Product;
 public interface ProductFacadeLocal {
 
     public List<Product> getAllProducts();
+    
+    public List<Product> getAllDresses();
+    
+    public List<Product> getAllSuits();
 
     void create(Product product);
 

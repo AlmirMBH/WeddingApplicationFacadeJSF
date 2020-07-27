@@ -31,4 +31,16 @@ public class ShopsManagedBean implements Serializable{
     public List<Shops> findAll(){
     return shopsFacadeLocal.findAll();
     }
+    
+    public List<Shops> findCatering(){
+    return shopsFacadeLocal.findCatering();
+    }
+    
+    public List<Shops> findPhotoVideo(){
+    return shopsFacadeLocal.findPhotoVideo();
+    }
+    
+    public List<Shops> findDecorations(){
+    return shopsFacadeLocal.findDecorations();
+    }
 }

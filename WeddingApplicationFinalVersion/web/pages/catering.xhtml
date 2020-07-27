@@ -23,55 +23,22 @@
         <h4 class="catering-title">Catering</h4>
         </div>        
             
-            <div class="container pt-3" style="pt-5">
-                <div class="row">
-                            <div class="col-sm-3">
-                                <div class="card" style="width: 16rem;"> 
-                                    <div class="card-img-wrapper">
-                                        <img class="card-img-top" src="../img/catering1.png"></img>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Pituljica Smaili</h5>
-                                        <p class="card-text">This dress is Made-To-Order. Whether you choose a standard size or custom measurements, our tailors craft each dress to order.</p>
-                                        <a href="#" class="btn btn-primary">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                                <div class="col-sm-3">
-                                    <div class="card" style="width: 16rem;">
-                                        <img class="card-img-top" src="../img/catering2.png"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Almir Mukača</h5>
-                                            <p class="card-text">A definition of traditional and modern style of wedding dress. Made from tulle and lace, this stunning dress has a fit bodice and neckline.</p>                                            
-                                            <a href="#" class="btn btn-primary">Read more</a>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <div class="col-sm-3">
-                                    <div class="card" style="width: 16rem;">
-                                        <img class="card-img-top" src="../img/catering3.png"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Samiri Tulumbi</h5>
-                                            <p class="card-text">The chiffon skirt, in a relaxed A-line, gracefully flows to the floor. The elegant sleeveless lace bodice boasts a beautiful high neckline.</p>
-                                            <a href="#" class="btn btn-primary">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                    
+            <div class="container">
+            <div class="row">
+                <ui:repeat value="#{shopsManagedBean.findCatering()}" var="catering">
                     <div class="col-sm-3">
-                                    <div class="card" style="width: 16rem;">
-                                        <img class="card-img-top" src="../img/catering4.png"></img>
-                                        <div class="card-body">
-                                            <h5 class="card-title">John Maccaroni</h5>
-                                            <p class="card-text">Striking and luxurious, this A-line asymmetrical wedding dress will help you make the wedding a success! It has a silk-like satin lining.</p>
-                                            <a href="#" class="btn btn-primary">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>                                
-                </div>
+                        <div class="card" style="border: activeborder">
+                            <h:graphicImage value="#{catering.photo}"></h:graphicImage><br/>                                                    
+
+                            <h2 style="text-align: center"><h:outputText value="#{catering.name}" /></h2>
+                            <h:outputText style="text-align: justify" value="#{catering.description}" /><br/>
+                            <strong>Adresa:</strong> <h:outputText value="#{catering.address} " /><br/>
+                            <strong>Kontakt:</strong> <h:outputText value="#{catering.contact} " /> <br/>
+                        </div>
+                    </div>    
+                </ui:repeat>  
+            </div>
+        
                 
                 
                 

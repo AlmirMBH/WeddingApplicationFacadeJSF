@@ -25,14 +25,29 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
     }
     
     @Override
-        public List<Product> getAllProducts() {
+        public List<Product> getAllDresses() {
         try {
-            Query query = entityManager.createNamedQuery("Product.findAll");
+            Query query = entityManager.createNamedQuery("Product.findDress");
             return query.getResultList();
         } catch (Exception exception) {
             exception.printStackTrace();
             return Collections.emptyList();
         }
     }
-    
+        
+    @Override
+        public List<Product> getAllSuits() {
+        try {
+            Query query = entityManager.createNamedQuery("Product.findSuit");
+            return query.getResultList();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return Collections.emptyList();
+        }
+    }    
+
+    @Override
+    public List<Product> getAllProducts() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
