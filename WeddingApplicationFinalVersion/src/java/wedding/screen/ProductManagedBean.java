@@ -24,6 +24,7 @@ public class ProductManagedBean implements Serializable {
     private Integer quantity;
     private List<ShoppingCartItem> shoppingCartItems = new ArrayList<>();
     private Category category;
+    private Product product = new Product();
     
     public ProductManagedBean() {
     }
@@ -72,8 +73,46 @@ public class ProductManagedBean implements Serializable {
         return productFacadeLocal.getAllSuits();        
     }
     
-    
-    
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public List<Product> findAll() {
+        return productFacadeLocal.findAll();
+    }
+
+    public String add() {
+        this.productFacadeLocal.create(this.product);
+        this.clear();
+        return "index";
+    }
+
+    public void delete(Product product) {
+        this.productFacadeLocal.remove(product);
+    }
+
+    public String edit(Product product) {
+        this.product = product;
+        return "edit";
+    }
+
+    public String edit() {
+        this.productFacadeLocal.edit(this.product);
+        this.product = new Product();
+        return "index";
+    }
+
+    public void clear() {
+        this.product.setName(null);
+        this.product.setCode(null);
+        this.product.setColor(null);
+        this.product.setSize(null);
+        this.product.setPrice(0);
+    }
     
     
     

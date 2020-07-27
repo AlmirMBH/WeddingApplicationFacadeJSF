@@ -21,11 +21,11 @@
         </style>
     </h:head>
     <h:body>
-        <ui:include src="WEB-INF/header_admin.xhtml" /> 
+        <ui:include src="../include/header_admin.xhtml" /> 
         <h2>EDIT</h2>
         <br/>
         <br/>
-        <form>
+        <h:form>
             <div id="edit">
                 <div>
                     <p:outputLabel value="Name"/>
@@ -63,21 +63,12 @@
                 </div>
                 <br/>
                 <div>
-                <div>
-                    <p:outputLabel  value="Category" />
-                <div>
-                    <h:selectOneMenu value = "#{productManagedBean.product.idCategory}"> 
-                    <f:selectItem itemValue = "1" itemLabel = "Dress" /> 
-                    <f:selectItem itemValue = "2" itemLabel = "Suit" /> 
-                </h:selectOneMenu> 
-                </div>
-                </div>
-                    <br/>
-                    <p:commandButton action="#{productManagedBean.edit()}" icon="pi pi-save" value="Save"/>   
+               <br/>
+               <p:commandButton action="#{productManagedBean.edit()}" icon="pi pi-save" value="Save"/>   
                 </div>
             </div>
-        </form>
-        <ui:include src="WEB-INF/footer.xhtml" />
+        </h:form>
+        <ui:include src="../include/footer.xhtml" />
     </h:body>
 </html>
 

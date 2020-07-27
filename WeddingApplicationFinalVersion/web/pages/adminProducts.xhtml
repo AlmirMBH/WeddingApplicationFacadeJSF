@@ -6,7 +6,6 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-
     <h:head>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></link>        
@@ -30,105 +29,73 @@
 
             }
         </style>
-
-
     </h:head>
 
     <h:body>
 
-
-
-        <ui:include src="WEB-INF/header_admin.xhtml" /> 
+        <ui:include src="../include/header_admin.xhtml" /> 
+        
+        <div class="container">
 
         <h2 >PRODUCTS</h2>
-        <br/>
-        <br/>
+        
 
         <div>
-
             <h:form>
                 <h:panelGrid  columns="13" cellpadding="5">
                     <h:outputText  value="Name"/>
-                    <p:inputText size="10" value="#{productAdminManagedBean.product.name}" required="true" requiredMessage="This field can not be empty"/>
+                    <p:inputText  size="10" value="#{productManagedBean.product.name}" required="true" requiredMessage="This field can not be empty"/>
                     <h:outputText  value="Code"/>
-
-                    <p:inputText size="10" value="#{productAdminManagedBean.product.code}" required="true" requiredMessage="This field can not be empty"/>
+                    <p:inputText  size="10" value="#{productManagedBean.product.code}" required="true" requiredMessage="This field can not be empty"/>
                     <h:outputText  value="Color"/>
-                    <p:inputText  size="10" value="#{productAdminManagedBean.product.color}" required="true" requiredMessage="This field can not be empty"/>
+                    <p:inputText id="color"  size="10" value="#{productManagedBean.product.color}" required="true" requiredMessage="This field can not be empty"/>
+                    <h:message for="color" style="color: red"/>
                     <h:outputText  value="Size"/>
-                    <p:inputText size="10" value="#{productAdminManagedBean.product.size}" required="true" requiredMessage="This field can not be empty"/>
+                    <p:inputText  size="10" value="#{productManagedBean.product.size}" required="true" requiredMessage="This field can not be empty"/>
                     <h:outputText  value="Price"/>
-                    <p:inputText  size="10" value="#{productAdminManagedBean.product.price}" required="true" requiredMessage="This field can not be empty"/>
-                    <h:outputText  value="Category:" />
-                    <h:selectOneMenu value = "#{productAdminManagedBean.product.idCategory}"> 
-                        <f:selectItem itemValue = "1" itemLabel = "Dress" /> 
-                        <f:selectItem itemValue = "2" itemLabel = "Suit" /> 
-                    </h:selectOneMenu> 
-                    <p:commandButton  value="Add" action="#{productAdminManagedBean.add()}" process="@this">
-                        <f:ajax execute="@form" render="table"></f:ajax>
-                    </p:commandButton>
+                    <p:inputText   size="10" value="#{productManagedBean.product.price}" required="true" requiredMessage="This field can not be empty"/>
+                    <h:commandButton  value="Add" action="#{productManagedBean.add()}">
+                    </h:commandButton>
                 </h:panelGrid>
             </h:form>
-
-
         </div>
+        
         <br/>
+        
         <h:form  id="form">
-            <p:dataTable id="productTable" value="#{productPaginationManagedBean.products}" var="productItem" paginator="true" rows="10"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                <f:facet name="header">Product pagination</f:facet>
-                <p:column>
-                    <f:facet name="header">
-                        Name
-                    </f:facet>
-                    #{productItem.name}
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        Code
-                    </f:facet>
-                    #{productItem.code}
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        Color
-                    </f:facet>
-                    #{productItem.color}
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        Size
-                    </f:facet>
-                    #{productItem.size}
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        Price
-                    </f:facet>
-                    #{productItem.price}
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        Category
-                    </f:facet>
-                    #{productItem.idCategory}
+            <p:dataTable id ="table" value="#{productManagedBean.findAll()}" var="product">
+                <p:column  headerText="Name">
+                    <h:outputText value="#{product.name}"/>
                 </p:column>
 
+                <p:column headerText="Code">
+                    <h:outputText value="#{product.code}"/>
+                </p:column>       
+
+                <p:column headerText="Color">
+                    <h:outputText value="#{product.color}"/>
+                </p:column> 
+
+                <p:column headerText="Size">
+                    <h:outputText value="#{product.size}"/>
+                </p:column> 
+
+                <p:column headerText="Price">
+                    <h:outputText value="#{product.price}"/>
+                </p:column>
 
                 <p:column>
-                    <p:commandButton action="#{productAdminManagedBean.edit(product)}" icon="fa fa-pencil">
+                    <h:commandLink action="#{productManagedBean.edit(product)}" value="Edit" >
                         <f:ajax execute="@form" render="table"></f:ajax>
-                    </p:commandButton>
-                    <p:commandButton action="#{productAdminManagedBean.delete(product)}" icon="fa fa-trash">
+                    </h:commandLink>
+                    <h:commandLink style="float: right" action="#{productManagedBean.delete(product)}" value="Delete" onclick="return confirm('Are you sure ?')">
                         <f:ajax execute="@form" render="table"></f:ajax>
-                    </p:commandButton>
-
-
+                    </h:commandLink>
                 </p:column>
             </p:dataTable>
         </h:form>
-        <ui:include src="WEB-INF/footer.xhtml" />
+        </div>
+        <ui:include src="../include/footer.xhtml" />
     </h:body>
 </html>
 
