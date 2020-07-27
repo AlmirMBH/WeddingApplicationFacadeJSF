@@ -193,5 +193,7 @@ public class Product implements Serializable {
     public String toString() {
         return "wedding.entity.Product[ id=" + id + " ]";
     }
+
+    
     
 }
