@@ -7,6 +7,8 @@ import wedding.entity.Privilege;
 
 @Local
 public interface PrivilegeFacadeLocal {
+    
+    public Privilege find(String name);
 
     void create(Privilege privilege);
 

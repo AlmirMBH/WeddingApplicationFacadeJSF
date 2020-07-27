@@ -44,7 +44,8 @@ public class RegisterFacade extends AbstractFacade<User> implements RegisterFaca
             user.setSurname(surname);
             user.setUsername(username);
             user.setPassword(password);
-            user.setIdPrivilege(privilegeFacadeLocal.find());
+            Privilege privilege = privilegeFacadeLocal.find("user");
+            user.setIdPrivilege(privilege);
             entityManager.persist(user);
             return true;
         } catch (Exception e) {

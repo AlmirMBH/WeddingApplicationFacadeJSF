@@ -30,4 +30,15 @@ public class PrivilegeFacade extends AbstractFacade<Privilege> implements Privil
         
     }
     
+    @Override
+    public Privilege find(String name) {
+        
+        Query query = entityManager.createNamedQuery("Privilege.findByName");
+        Privilege privilege = (Privilege) query.setParameter("name", name).getSingleResult();
+        System.out.println(privilege);
+        return privilege;
+        
+        
+    }
+    
 }
