@@ -28,7 +28,7 @@
             <div class="row">
                 <ui:repeat value="#{shopsManagedBean.findAll()}" var="shop">
                     <div class="col-sm-3">
-                        <div class="card" style="border: activeborder">
+                        <div class="card mt-5" style="border: activeborder">
                             <h:graphicImage value="#{shop.photo}"></h:graphicImage><br/>                                                    
 
                             <h2 style="text-align: center"><h:outputText value="#{shop.name}" /></h2>

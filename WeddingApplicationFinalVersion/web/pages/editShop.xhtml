@@ -16,17 +16,16 @@
                 text-align: left;
                 padding-left: 70px
             }
-
-
         </style>
     </h:head>
     <h:body>
         <ui:include src="../include/header_admin.xhtml" /> 
-        <h2>EDIT</h2>
-        <br/>
-        <br/>
-        <form>
-            <div id="edit">
+
+
+
+        <div class="container" id="edit">
+            <h2>EDIT</h2>
+            <form>
                 <div>
                     <p:outputLabel value="Name"/>
                     <div>
@@ -71,8 +70,8 @@
                         <p:commandButton action="#{shopsManagedBean.edit()}" icon="pi pi-save" value="Save"/>   
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
         <ui:include src="../include/footer.xhtml" />
     </h:body>
 </html>

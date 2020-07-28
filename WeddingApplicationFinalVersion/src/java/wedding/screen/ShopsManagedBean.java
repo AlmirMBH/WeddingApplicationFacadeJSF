@@ -15,6 +15,7 @@ public class ShopsManagedBean implements Serializable{
     
     @Inject
     private ShopsFacadeLocal shopsFacadeLocal;
+    Shops shop = new Shops();
 
     public ShopsManagedBean() {
     }
@@ -25,8 +26,7 @@ public class ShopsManagedBean implements Serializable{
 
     public void setShopsFacadeLocal(ShopsFacadeLocal shopsFacadeLocal) {
         this.shopsFacadeLocal = shopsFacadeLocal;
-    }
-    
+    }    
     
     public List<Shops> findAll(){
     return shopsFacadeLocal.findAll();
@@ -43,4 +43,14 @@ public class ShopsManagedBean implements Serializable{
     public List<Shops> findDecorations(){
     return shopsFacadeLocal.findDecorations();
     }
+
+    public Shops getShop() {
+        return shop;
+    }
+
+    public void setShop(Shops shop) {
+        this.shop = shop;
+    }
+    
+    
 }

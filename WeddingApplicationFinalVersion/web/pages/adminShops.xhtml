@@ -35,7 +35,7 @@
     </h:head>
 
     <h:body>
-    <ui:include src="WEB-INF/header_admin.xhtml" /> 
+    <ui:include src="../include/header_admin.xhtml" /> 
 
         <h2 >Shops</h2>
         <br/>
@@ -48,7 +48,7 @@
        
         <br/>
         <h:form  id="form">
-            <p:dataTable id ="table" value="#{shopsManagedBean.loadAll()}" var="shop" >
+            <p:dataTable id ="table" value="#{shopsManagedBean.findAll()}" var="shop" >
                 <p:column  headerText="Name">
                     <h:outputText value="#{shop.name}"/>
                 </p:column>
@@ -80,7 +80,7 @@
                 </p:column>
             </p:dataTable>>
         </h:form>
-           <ui:include src="WEB-INF/footer.xhtml" />
+           <ui:include src="../include/footer.xhtml" />
     </h:body>
 </html>
 
