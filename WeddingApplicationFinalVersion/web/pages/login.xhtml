@@ -18,15 +18,15 @@
         <h:form>
             <h:panelGrid columns="3">
             
-            <h:outputLabel value=" Username: "/>
-            <h:inputText id="username" value="" required="true" validatorMessage="Please fill out the field !"/>
+            <h:outputLabel value="Username: "/>
+            <h:inputText id="username" value="#{loginManagedBean.username}" required="true" validatorMessage="Please fill out the field!"/>
             <h:message for="username" style="color: red"></h:message>
             
-             <h:outputLabel value=" Password: "/>
-             <h:inputText id="password" value="" required="true" validatorMessage="Please fill out the field !"/>
+             <h:outputLabel value="Password: "/>
+             <h:inputSecret id="password" value="#{loginManagedBean.password}" required="true" validatorMessage="Please fill out the field!"/>
              <h:message for="password" style=" color: red"></h:message>
        
-            <h:commandButton value="Log In" action="http://localhost:8080/WeddingApplicationFinalVersion/faces/pages/login.xhtml" />
+             <h:commandButton value="Log In" action="#{loginManagedBean.login()}" />
             </h:panelGrid>
         </h:form>
                 </div>

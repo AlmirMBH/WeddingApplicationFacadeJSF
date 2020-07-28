@@ -20,51 +20,52 @@
     </h:head>
     <h:body>
         <ui:include src="../include/header_admin.xhtml" /> 
-        
-        <h:form>
-            <div class="container" id="edit">
-                <h2>EDIT</h2>
-                <div>
-                    <p:outputLabel value="Name"/>
+        <div class="container" id="edit">
+            <h2>EDIT</h2>
+            <h:form>
+                <div id="edit">
                     <div>
-                        <p:inputText id="name" value="#{productManagedBean.product.name}" required="true" requiredMessage="This field can not be empty"/>
+                        <p:outputLabel value="Name"/>
+                        <div>
+                            <p:inputText id="name" value="#{productAdminManagedBean.product.name}" required="true" requiredMessage="This field can not be empty"/>
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <p:outputLabel value="Code"/>
                     <div>
-                        <p:inputText id="code" value="#{productManagedBean.product.code}" required="true" requiredMessage="This field can not be empty"/>
+                        <p:outputLabel value="Code"/>
+                        <div>
+                            <p:inputText id="code" value="#{productAdminManagedBean.product.code}" required="true" requiredMessage="This field can not be empty"/>
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <p:outputLabel value="Color"/>
                     <div>
-                        <p:inputText id="color" value="#{productManagedBean.product.color}" required="true" requiredMessage="This field can not be empty"/>
+                        <p:outputLabel value="Color"/>
+                        <div>
+                            <p:inputText id="color" value="#{productAdminManagedBean.product.color}" required="true" requiredMessage="This field can not be empty"/>
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <p:outputLabel  value="Size"/>
                     <div>
-                        <p:inputText id="size" value="#{productManagedBean.product.size}" required="true" requiredMessage="This field can not be empty"/>
+                        <p:outputLabel  value="Size"/>
+                        <div>
+                            <p:inputText id="size" value="#{productAdminManagedBean.product.size}" required="true" requiredMessage="This field can not be empty"/>
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <p:outputLabel value="Price"/>
                     <div>
-                        <p:inputText id="price" value="#{productManagedBean.product.price}" required="true" requiredMessage="This field can not be empty"/>
+                        <p:outputLabel value="Price"/>
+                        <div>
+                            <p:inputText id="price" value="#{productAdminManagedBean.product.price}" required="true" requiredMessage="This field can not be empty"/>
+                        </div>
                     </div>
-                </div>
-                <br/>
-                <div>
                     <br/>
-                    <p:commandButton action="#{productManagedBean.edit()}" icon="pi pi-save" value="Save"/>   
+                    <div>
+                        <br/>
+                        <p:commandButton action="#{productAdminManagedBean.edit()}" icon="pi pi-save" value="Save"/>   
+                    </div>
                 </div>
-            </div>
-        </h:form>
+            </h:form>
+        </div>
         <ui:include src="../include/footer.xhtml" />
     </h:body>
 </html>

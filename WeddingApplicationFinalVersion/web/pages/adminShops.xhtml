@@ -6,7 +6,6 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-
     <h:head>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></link>        
@@ -27,60 +26,53 @@
                 font-size: xx-large;
                 padding-top: 30px;
                 padding-bottom: 30px;
-                
             }
         </style>
-
-
     </h:head>
 
     <h:body>
-    <ui:include src="../include/header_admin.xhtml" /> 
+        <ui:include src="../include/header_admin.xhtml" /> 
 
-        <h2 >Shops</h2>
-        <br/>
-        <br/>
+        <div class="container mt-5">
+            <h2 >Shops</h2>        
+            <form style="text-align: center">
+                <h:link value="Add new Shop" outcome="addShop">
+                </h:link>
+            </form>       
+            <br/>
+            <h:form  id="form">
+                <p:dataTable id ="table" value="#{shopsAdminManagedBean.loadAll()}" var="shop" >
+                    <p:column  headerText="Name">
+                        <h:outputText value="#{shop.name}"/>
+                    </p:column>
 
-        <form>
-            <h:link  value="Add new Shop" outcome="addShop">
-            </h:link>
-        </form>
-       
-        <br/>
-        <h:form  id="form">
-            <p:dataTable id ="table" value="#{shopsManagedBean.findAll()}" var="shop" >
-                <p:column  headerText="Name">
-                    <h:outputText value="#{shop.name}"/>
-                </p:column>
+                    <p:column headerText="Surname">
+                        <h:outputText value="#{shop.address}"/>
+                    </p:column>       
 
-                <p:column headerText="Surname">
-                    <h:outputText value="#{shop.address}"/>
-                </p:column>       
+                    <p:column headerText="Username">
+                        <h:outputText value="#{shop.contact}"/>
+                    </p:column> 
 
-                <p:column headerText="Username">
-                    <h:outputText value="#{shop.contact}"/>
-                </p:column> 
+                    <p:column headerText="Password">
+                        <h:outputText value="#{shop.description}"/>
+                    </p:column> 
+                    <p:column headerText="Service">
+                        <h:outputText value="#{shop.idService}"/>
+                    </p:column> 
 
-                <p:column headerText="Password">
-                    <h:outputText value="#{shop.description}"/>
-                </p:column> 
-                 <p:column headerText="Service">
-                     <h:outputText value="#{shop.idService}"/>
-                </p:column> 
-
-                <p:column>
-                    <p:commandButton action="#{shopsManagedBean.edit(shop)}" icon="fa fa-pencil">
-                        <f:ajax execute="@form" render="table"></f:ajax>
-                    </p:commandButton>
-                    <p:commandButton action="#{shopsManagedBean.delete(shop)}" icon="fa fa-trash">
-                        <f:ajax execute="@form" render="table"></f:ajax>
-                    </p:commandButton>
-
-
-                </p:column>
-            </p:dataTable>>
-        </h:form>
-           <ui:include src="../include/footer.xhtml" />
+                    <p:column>
+                        <p:commandButton action="#{shopsAdminManagedBean.edit(shop)}" icon="fa fa-pencil">
+                            <f:ajax execute="@form" render="table"></f:ajax>
+                        </p:commandButton>
+                        <p:commandButton action="#{shopsAdminManagedBean.delete(shop)}" icon="fa fa-trash">
+                            <f:ajax execute="@form" render="table"></f:ajax>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>>
+            </h:form>        
+        </div>
+        <ui:include src="../include/footer.xhtml" />
     </h:body>
 </html>
 

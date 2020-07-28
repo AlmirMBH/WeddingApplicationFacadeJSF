@@ -8,7 +8,8 @@ import wedding.entity.User;
 
 @Local
 public interface UserFacadeLocal {
-
+    
+    
     void create(User user);
 
     void edit(User user);
@@ -23,7 +24,7 @@ public interface UserFacadeLocal {
 
     int count();
     
-    
     public User findUserByUsername(String username);
+    
     
 }

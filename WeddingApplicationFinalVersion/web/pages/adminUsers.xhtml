@@ -27,24 +27,14 @@
                 font-size: xx-large;
                 padding-top: 30px;
                 padding-bottom: 30px;
-
             }
         </style>
-
-
     </h:head>
-
     <h:body>
-
-
-
         <ui:include src="../include/header_admin.xhtml" /> 
-
-        <h2 >USERS</h2>
-
-
         <div class="container">
-            <h:form>
+            <h2 >USERS</h2>
+            <h:form rendered="#{userManagedBean.loggedIn}">
                 <h:panelGrid  columns="13" cellpadding="5">
                     <h:outputText  value="Name"/>
                     <p:inputText size="10" value="#{userManagedBean.user.name}" required="true" requiredMessage="This field can not be empty"/>
@@ -64,41 +54,39 @@
                     </p:commandButton>
                 </h:panelGrid>
             </h:form>
+        
+        <h:form  id="form">
+            <p:dataTable id ="table" value="#{userManagedBean.loadAll()}" var="user" >
+                <p:column  headerText="Name">
+                    <h:outputText value="#{user.name}"/>
+                </p:column>
 
+                <p:column headerText="Surname">
+                    <h:outputText value="#{user.surname}"/>
+                </p:column>       
 
-            <br/>
-            <h:form  id="form">
-                <p:dataTable id ="table" value="#{userManagedBean.loadAll()}" var="user" >
-                    <p:column  headerText="Name">
-                        <h:outputText value="#{user.name}"/>
-                    </p:column>
+                <p:column headerText="Username">
+                    <h:outputText value="#{user.username}"/>
+                </p:column> 
 
-                    <p:column headerText="Surname">
-                        <h:outputText value="#{user.surname}"/>
-                    </p:column>       
+                <p:column headerText="Password">
+                    <h:outputText value="#{user.password}"/>
+                </p:column> 
+                
+                 <p:column headerText="Privilege">
+                     <h:outputText value="#{user.idPrivilege}"/>
+                </p:column> 
 
-                    <p:column headerText="Username">
-                        <h:outputText value="#{user.username}"/>
-                    </p:column> 
-
-                    <p:column headerText="Password">
-                        <h:outputText value="#{user.password}"/>
-                    </p:column> 
-
-                    <p:column headerText="Privilege">
-                        <h:outputText value="#{user.idPrivilege}"/>
-                    </p:column> 
-
-                    <p:column>
-                        <p:commandButton action="#{userManagedBean.edit(user)}" icon="fa fa-pencil">
-                            <f:ajax execute="@form" render="table"></f:ajax>
-                        </p:commandButton>
-                        <p:commandButton action="#{userManagedBean.delete(user)}" icon="fa fa-trash">
-                            <f:ajax execute="@form" render="table"></f:ajax>
-                        </p:commandButton>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
+                <p:column>
+                    <p:commandButton action="#{userManagedBean.edit(user)}" icon="fa fa-pencil">
+                        <f:ajax execute="@form" render="table"></f:ajax>
+                    </p:commandButton>
+                    <p:commandButton action="#{userManagedBean.delete(user)}" icon="fa fa-trash">
+                        <f:ajax execute="@form" render="table"></f:ajax>
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
         </div>
         <ui:include src="../include/footer.xhtml" />
     </h:body>

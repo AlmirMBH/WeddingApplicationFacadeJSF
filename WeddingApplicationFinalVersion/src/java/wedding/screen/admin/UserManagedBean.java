@@ -16,6 +16,9 @@ public class UserManagedBean implements Serializable{
     @Inject
     private UserFacadeLocal userFacadeLocal;
     private User user= new User();
+    private String username;
+    private String password;
+    private boolean loggedIn;
 
     public UserManagedBean() {
     }
@@ -27,16 +30,14 @@ public class UserManagedBean implements Serializable{
     public void setUser(User user) {
         this.user = user;
     }
+    
      public List<User> loadAll() {
         return userFacadeLocal.findAll();
-
-    }
+    }    
     
-    
-     public String add(){
+     public void add(){
         userFacadeLocal.create(user);
         this.user= new User();
-        return"adminUsers";
     }
     
     public void delete(User user){
@@ -44,11 +45,47 @@ public class UserManagedBean implements Serializable{
     }
     
     public String edit(User user){
-        return "editProduct";
+        return "editUser";
     }
     
     public String edit(){
         userFacadeLocal.edit(user);
         return "adminUsers";
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    public String loginSession(){                
+        if(user.getUsername().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
+            loggedIn = true;
+            return "index";
+        }
+        return null;        
+    }
+
+    public void logout(){
+        loggedIn = false;
     }
 }

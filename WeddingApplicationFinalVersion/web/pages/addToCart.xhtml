@@ -5,26 +5,23 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-            
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></link>        
         <style>        
-        h1{padding-top: 5px;
-              color: slategray;
-        }
-        h4{margin-top: 2;}
-        body{background-color: gainsboro;}        
+            h1{padding-top: 5px;
+               color: slategray;
+            }
+            h4{margin-top: 2;}
+            body{background-color: gainsboro;}        
         </style>
         <title>Add to cart</title>
     </h:head>
     <h:body>
-           <ui:include src="../include/header.xhtml" /> 
-           
-               <h:form>
-                   <ui:repeat var="product" value="#{productBean.allProducts}">
-                         <div class="col-sm-3">
-                    <div class="card">
-                        <img src="img/dress4.jpg"/>
-                    </div>
+        <ui:include src="../include/header.xhtml" /> 
+
+        <h:form>
+            <ui:repeat var="product" value="#{productManagedBean.findAll()}">
+                <div class="col-sm-3">                    
                 </div> 
                 <h:column>
                     <f:facet name="header">Product</f:facet>
@@ -36,24 +33,24 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Add</f:facet>
-                    <h:commandButton value="Add to cart" actionListener="#{productBean.addToCart(product)}">
+                    <h:commandButton value="Add to cart" actionListener="#{productManagedBean.addToCart(product)}">
                         <f:ajax execute="@form" render="shoppingCartTable"></f:ajax>
                     </h:commandButton>
                 </h:column>
-</ui:repeat>
-                   
+            </ui:repeat>
+
             <br/>
             <h:outputText value="Quantity"/>
-            <h:selectOneMenu value="#{productBean.quantity}">
+            <h:selectOneMenu value="#{productManagedBean.quantity}">
                 <f:selectItem itemValue=" " itemLabel=" "/>
             </h:selectOneMenu>
-            
+
             <br/>
             <h:outputText value="Confirm your shopping cart "/>
-            <h:commandButton value="Confirm" action="#{productBean.confirm()}">
+            <h:commandButton value="Confirm" action="#{productManagedBean.confirm()}">
             </h:commandButton>
         </h:form>
-           <ui:include src="../include/footer.xhtml" />
+        <ui:include src="../include/footer.xhtml" />
     </h:body>
 </html>
 
